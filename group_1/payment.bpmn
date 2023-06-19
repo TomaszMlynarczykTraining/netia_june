@@ -82,10 +82,10 @@
       <bpmn:incoming>Flow_1yt96fj</bpmn:incoming>
       <bpmn:outgoing>Flow_0ylpiwb</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:serviceTask id="Activity_01kjvcy" name="send conclusion">
+    <bpmn:sendTask id="Activity_01kjvcy" name="send conclusion">
       <bpmn:incoming>Flow_0fud1ft</bpmn:incoming>
       <bpmn:outgoing>Flow_1x3l8hi</bpmn:outgoing>
-    </bpmn:serviceTask>
+    </bpmn:sendTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1p4vqgr">
@@ -195,7 +195,7 @@
       <bpmndi:BPMNShape id="Activity_1qgwx72_di" bpmnElement="Activity_1wl6k22">
         <dc:Bounds x="450" y="550" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1t5mp2y_di" bpmnElement="Activity_01kjvcy">
+      <bpmndi:BPMNShape id="Activity_0du9vj0_di" bpmnElement="Activity_01kjvcy">
         <dc:Bounds x="970" y="280" width="100" height="80" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
