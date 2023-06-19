@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0wb8gdj" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0wb8gdj" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.11.1" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
   <bpmn:collaboration id="Collaboration_1p4vqgr">
     <bpmn:participant id="Participant_0tzuotj" name="Payment" processRef="Process_1ooi1iu" />
   </bpmn:collaboration>
@@ -23,25 +23,31 @@
       </bpmn:lane>
       <bpmn:lane id="Lane_1qylvad" name="client">
         <bpmn:flowNodeRef>Gateway_0uanht2</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Event_0q3nhz8</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_0uwj63m</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1v3n34y</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1gwxp7k</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0q3nhz8</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0lxswwf</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_06m96zg</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_0h56eao">
           <bpmn:lane id="Lane_01aynpo">
             <bpmn:flowNodeRef>Gateway_0uanht2</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Event_0q3nhz8</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_0uwj63m</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Event_1v3n34y</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1gwxp7k</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Event_0q3nhz8</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Gateway_0lxswwf</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Event_06m96zg</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
       </bpmn:lane>
       <bpmn:lane id="Lane_0aznh6c" name="system mailingowy">
-        <bpmn:flowNodeRef>Activity_01kjvcy</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0twh5yl</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0b7l8r7</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_1luuuok">
           <bpmn:lane id="Lane_0lcyy55">
-            <bpmn:flowNodeRef>Activity_01kjvcy</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Event_0twh5yl</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Event_0b7l8r7</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
       </bpmn:lane>
@@ -51,9 +57,6 @@
       <bpmn:incoming>Flow_0ylpiwb</bpmn:incoming>
       <bpmn:outgoing>Flow_10fjqtt</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:endEvent id="Event_0q3nhz8" name="End payment process">
-      <bpmn:incoming>Flow_1x3l8hi</bpmn:incoming>
-    </bpmn:endEvent>
     <bpmn:exclusiveGateway id="Gateway_0uwj63m" name="by card">
       <bpmn:incoming>Flow_1lxhm49</bpmn:incoming>
       <bpmn:outgoing>Flow_1yt96fj</bpmn:outgoing>
@@ -62,8 +65,7 @@
     <bpmn:startEvent id="Event_1v3n34y" name="Payment">
       <bpmn:outgoing>Flow_1lxhm49</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0fud1ft" sourceRef="Activity_1gwxp7k" targetRef="Activity_01kjvcy" />
-    <bpmn:sequenceFlow id="Flow_1x3l8hi" sourceRef="Activity_01kjvcy" targetRef="Event_0q3nhz8" />
+    <bpmn:sequenceFlow id="Flow_0fud1ft" sourceRef="Activity_1gwxp7k" targetRef="Event_0b7l8r7" />
     <bpmn:sequenceFlow id="Flow_0rkbxwu" sourceRef="Activity_1fdhbsb" targetRef="Gateway_0uanht2" />
     <bpmn:sequenceFlow id="Flow_0ylpiwb" sourceRef="Activity_1wl6k22" targetRef="Gateway_0uanht2" />
     <bpmn:sequenceFlow id="Flow_10fjqtt" sourceRef="Gateway_0uanht2" targetRef="Activity_1gwxp7k" />
@@ -82,10 +84,34 @@
       <bpmn:incoming>Flow_1yt96fj</bpmn:incoming>
       <bpmn:outgoing>Flow_0ylpiwb</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:sendTask id="Activity_01kjvcy" name="send conclusion">
+    <bpmn:sequenceFlow id="Flow_0g9y3mh" sourceRef="Event_0twh5yl" targetRef="Gateway_0lxswwf" />
+    <bpmn:sequenceFlow id="Flow_1oi8in0" sourceRef="Gateway_0lxswwf" targetRef="Event_0q3nhz8" />
+    <bpmn:endEvent id="Event_0q3nhz8" name="End payment process">
+      <bpmn:incoming>Flow_1oi8in0</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:exclusiveGateway id="Gateway_0lxswwf">
+      <bpmn:incoming>Flow_0g9y3mh</bpmn:incoming>
+      <bpmn:outgoing>Flow_1oi8in0</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1d9uoor</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1d9uoor" sourceRef="Gateway_0lxswwf" targetRef="Event_06m96zg" />
+    <bpmn:endEvent id="Event_06m96zg">
+      <bpmn:incoming>Flow_1d9uoor</bpmn:incoming>
+      <bpmn:escalationEventDefinition id="EscalationEventDefinition_1b22ir7" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0dp9g40" sourceRef="Event_0b7l8r7" targetRef="Event_0twh5yl" />
+    <bpmn:intermediateThrowEvent id="Event_0twh5yl">
+      <bpmn:incoming>Flow_0dp9g40</bpmn:incoming>
+      <bpmn:outgoing>Flow_0g9y3mh</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_1p4o48j" />
+    </bpmn:intermediateThrowEvent>
+    <bpmn:intermediateCatchEvent id="Event_0b7l8r7">
       <bpmn:incoming>Flow_0fud1ft</bpmn:incoming>
-      <bpmn:outgoing>Flow_1x3l8hi</bpmn:outgoing>
-    </bpmn:sendTask>
+      <bpmn:outgoing>Flow_0dp9g40</bpmn:outgoing>
+      <bpmn:timerEventDefinition id="TimerEventDefinition_037u9fz">
+        <bpmn:timeDuration xsi:type="bpmn:tFormalExpression">15m</bpmn:timeDuration>
+      </bpmn:timerEventDefinition>
+    </bpmn:intermediateCatchEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1p4vqgr">
@@ -154,25 +180,31 @@
         <di:waypoint x="710" y="460" />
         <di:waypoint x="710" y="195" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1x3l8hi_di" bpmnElement="Flow_1x3l8hi">
-        <di:waypoint x="1070" y="320" />
-        <di:waypoint x="1102" y="320" />
-        <di:waypoint x="1102" y="170" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0fud1ft_di" bpmnElement="Flow_0fud1ft">
         <di:waypoint x="870" y="170" />
-        <di:waypoint x="930" y="170" />
-        <di:waypoint x="930" y="320" />
-        <di:waypoint x="970" y="320" />
+        <di:waypoint x="960" y="170" />
+        <di:waypoint x="960" y="322" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0g9y3mh_di" bpmnElement="Flow_0g9y3mh">
+        <di:waypoint x="1048" y="340" />
+        <di:waypoint x="1060" y="340" />
+        <di:waypoint x="1060" y="155" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1oi8in0_di" bpmnElement="Flow_1oi8in0">
+        <di:waypoint x="1095" y="140" />
+        <di:waypoint x="1142" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1d9uoor_di" bpmnElement="Flow_1d9uoor">
+        <di:waypoint x="1070" y="165" />
+        <di:waypoint x="1070" y="210" />
+        <di:waypoint x="1142" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0dp9g40_di" bpmnElement="Flow_0dp9g40">
+        <di:waypoint x="978" y="340" />
+        <di:waypoint x="1012" y="340" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Gateway_0uanht2_di" bpmnElement="Gateway_0uanht2" isMarkerVisible="true">
         <dc:Bounds x="685" y="145" width="50" height="50" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0q3nhz8_di" bpmnElement="Event_0q3nhz8">
-        <dc:Bounds x="1102" y="152" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="1088" y="195" width="66" height="27" />
-        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_0uwj63m_di" bpmnElement="Gateway_0uwj63m" isMarkerVisible="true">
         <dc:Bounds x="475" y="145" width="50" height="50" />
@@ -195,8 +227,23 @@
       <bpmndi:BPMNShape id="Activity_1qgwx72_di" bpmnElement="Activity_1wl6k22">
         <dc:Bounds x="450" y="550" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_0du9vj0_di" bpmnElement="Activity_01kjvcy">
-        <dc:Bounds x="970" y="280" width="100" height="80" />
+      <bpmndi:BPMNShape id="Event_0q3nhz8_di" bpmnElement="Event_0q3nhz8">
+        <dc:Bounds x="1142" y="122" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1128" y="165" width="66" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0lxswwf_di" bpmnElement="Gateway_0lxswwf" isMarkerVisible="true">
+        <dc:Bounds x="1045" y="115" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0rqgzid_di" bpmnElement="Event_06m96zg">
+        <dc:Bounds x="1142" y="192" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0e1qeht_di" bpmnElement="Event_0twh5yl">
+        <dc:Bounds x="1012" y="322" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_15kgr9f_di" bpmnElement="Event_0b7l8r7">
+        <dc:Bounds x="942" y="322" width="36" height="36" />
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
