@@ -153,7 +153,7 @@
       <bpmn:incoming>Flow_018m6qf</bpmn:incoming>
       <bpmn:outgoing>Flow_0f8mrz5</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:userTask id="PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie" name="Decyzja o zatrudnieniu">
+    <bpmn:userTask id="PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie" name="Decyzja o zatrudnieniu" camunda:formRef="FR_czyZatrudnienie" camunda:formRefBinding="latest">
       <bpmn:incoming>Flow_0f8mrz5</bpmn:incoming>
       <bpmn:outgoing>Flow_14wb57c</bpmn:outgoing>
     </bpmn:userTask>

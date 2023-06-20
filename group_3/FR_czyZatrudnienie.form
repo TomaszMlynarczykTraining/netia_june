@@ -1,0 +1,24 @@
+{
+  "components": [
+    {
+      "text": "# Czy zatrudniamy kandydata",
+      "type": "text",
+      "id": "Field_1r3qh8z"
+    },
+    {
+      "label": "Checkbox",
+      "type": "checkbox",
+      "id": "Field_1n7o0gr",
+      "key": "czyZatrudnienie"
+    }
+  ],
+  "type": "default",
+  "id": "FR_czyZatrudnienie",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
