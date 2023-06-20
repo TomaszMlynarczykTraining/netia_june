@@ -1,0 +1,40 @@
+{
+  "components": [
+    {
+      "values": [
+        {
+          "label": "Developer",
+          "value": "Developer"
+        },
+        {
+          "label": "Consultant",
+          "value": "Consultant"
+        },
+        {
+          "label": "Accountant",
+          "value": "Accountant"
+        }
+      ],
+      "label": "Position name",
+      "type": "select",
+      "id": "Field_03u9dat",
+      "key": "positionName"
+    },
+    {
+      "label": "Years worked",
+      "type": "number",
+      "id": "Field_0duiszq",
+      "key": "yearsWorked",
+      "defaultValue": 1
+    }
+  ],
+  "type": "default",
+  "id": "FR_Salary",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
