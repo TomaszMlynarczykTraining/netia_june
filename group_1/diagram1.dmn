@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="DMN001_ABC" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <decision id="Decision_1jzllwi" name="Decision 1">
+    <informationRequirement id="InformationRequirement_0zkda36">
+      <requiredDecision href="#Decision_0roxg54" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_05nrfvy">
+      <requiredDecision href="#Decision_1f4h6ig" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_0h8r42u" hitPolicy="FIRST">
+      <input id="Input_1" biodi:width="192" camunda:inputVariable="OrderType">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>OrderType</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="OrderValue" typeRef="integer" />
+      <output id="OutputClause_1a3x715" name="approval" typeRef="string" />
+      <rule id="DecisionRule_05fk9we">
+        <inputEntry id="UnaryTests_0rwdpxd">
+          <text>"shipment"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_092li5y">
+          <text>3000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ol06dj">
+          <text>"yes"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_03tgzk4">
+        <inputEntry id="UnaryTests_19md0rv">
+          <text>"plane"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0odd69r">
+          <text>1000</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rvwj9f">
+          <text>"no"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tbz7kz">
+        <inputEntry id="UnaryTests_1jvgx2n">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0v7062x">
+          <text></text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cnzs92">
+          <text>"default"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="Decision_1f4h6ig" name="orderType" />
+  <decision id="Decision_0roxg54" name="orderValue" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision_1jzllwi">
+        <dc:Bounds height="80" width="180" x="320" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1ceb4sp" dmnElementRef="Decision_1f4h6ig">
+        <dc:Bounds height="80" width="180" x="160" y="240" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1588xwx" dmnElementRef="Decision_0roxg54">
+        <dc:Bounds height="80" width="180" x="450" y="240" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1jdh42n" dmnElementRef="InformationRequirement_0zkda36">
+        <di:waypoint x="540" y="240" />
+        <di:waypoint x="440" y="200" />
+        <di:waypoint x="440" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0kymyu4" dmnElementRef="InformationRequirement_05nrfvy">
+        <di:waypoint x="250" y="240" />
+        <di:waypoint x="380" y="200" />
+        <di:waypoint x="380" y="180" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
