@@ -8,14 +8,14 @@
       <bpmn:lane id="Lane_1k1pusb" name="Kierownik Zatrudnienia">
         <bpmn:flowNodeRef>Event_04vlo6j</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_10a8gs5</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_0xnqhcn</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_0zho8vk">
           <bpmn:lane id="Lane_15gmn1v">
             <bpmn:flowNodeRef>Event_04vlo6j</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Gateway_10a8gs5</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_0xnqhcn</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
       </bpmn:lane>
@@ -153,10 +153,6 @@
       <bpmn:incoming>Flow_018m6qf</bpmn:incoming>
       <bpmn:outgoing>Flow_0f8mrz5</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:userTask id="PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie" name="Decyzja o zatrudnieniu">
-      <bpmn:incoming>Flow_0f8mrz5</bpmn:incoming>
-      <bpmn:outgoing>Flow_14wb57c</bpmn:outgoing>
-    </bpmn:userTask>
     <bpmn:manualTask id="Activity_1bociii" name="Otrzymanie podpisanej umowy">
       <bpmn:incoming>Flow_1gd2rq7</bpmn:incoming>
       <bpmn:outgoing>Flow_00bua00</bpmn:outgoing>
@@ -170,6 +166,16 @@
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_0251rh1</bpmn:incoming>
       <bpmn:outgoing>Flow_1myaipb</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:callActivity id="PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie" name="Decyzja o zatrudnieniu" calledElement="PR_Decyzja_o_zatrudnieniu">
+      <bpmn:extensionElements>
+        <camunda:in businessKey="#{execution.processBusinessKey}" />
+        <camunda:in variables="all" />
+        <camunda:in source="iloscKandydatow" target="zewnetrznaIloscKandydatow" />
+        <camunda:out source="czyZatrudnienie" target="czyZatrudnienie" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_0f8mrz5</bpmn:incoming>
+      <bpmn:outgoing>Flow_14wb57c</bpmn:outgoing>
     </bpmn:callActivity>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
@@ -261,9 +267,6 @@
       <bpmndi:BPMNShape id="Activity_1jgjmt7_di" bpmnElement="Activity_01m4qg3">
         <dc:Bounds x="740" y="510" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_04xjxy0_di" bpmnElement="PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie">
-        <dc:Bounds x="740" y="170" width="100" height="80" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1nlqtvu_di" bpmnElement="Activity_1bociii">
         <dc:Bounds x="1170" y="340" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -275,6 +278,9 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1etb3lb_di" bpmnElement="Activity_0xnqhcn">
         <dc:Bounds x="290" y="130" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0kr4crc_di" bpmnElement="PR_Zatrudnienie_Pracownika_UT_Decyzja_Zatrudnienie">
+        <dc:Bounds x="740" y="170" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_14wb57c_di" bpmnElement="Flow_14wb57c">
         <di:waypoint x="790" y="170" />
