@@ -66,6 +66,12 @@
       </bpmn:lane>
     </bpmn:laneSet>
     <bpmn:manualTask id="Activity_16hvhjs" name="Poszukiwanie kandydatów">
+      <bpmn:extensionElements>
+        <camunda:properties>
+          <camunda:property />
+        </camunda:properties>
+        <camunda:executionListener expression="#{execution.setVariable( &#34;iloscKlientow&#34;,  3 ) }" event="end" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1myaipb</bpmn:incoming>
       <bpmn:incoming>Flow_068s691</bpmn:incoming>
       <bpmn:incoming>Flow_1yfkeiy</bpmn:incoming>
