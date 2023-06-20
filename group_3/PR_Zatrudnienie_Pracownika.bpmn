@@ -70,7 +70,7 @@
         <camunda:properties>
           <camunda:property />
         </camunda:properties>
-        <camunda:executionListener expression="#{execution.setVariable( &#34;iloscKlientow&#34;,  3 ) }" event="end" />
+        <camunda:executionListener expression="#{execution.setVariable( &#34;iloscKandydatow&#34;,  3 ) }" event="end" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_1myaipb</bpmn:incoming>
       <bpmn:incoming>Flow_068s691</bpmn:incoming>
@@ -136,7 +136,7 @@
       <bpmn:incoming>Flow_0vmamlo</bpmn:incoming>
       <bpmn:outgoing>Flow_1gt1z5e</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:userTask id="PR_Zatrudnienie_Pracownika_UT_PodpisanieUmowy" name="Podpisanie umowy">
+    <bpmn:userTask id="PR_Zatrudnienie_Pracownika_UT_PodpisanieUmowy" name="Podpisanie umowy" camunda:formRef="FR_czyPodpisano" camunda:formRefBinding="latest">
       <bpmn:incoming>Flow_11155oo</bpmn:incoming>
       <bpmn:outgoing>Flow_17cmmcd</bpmn:outgoing>
     </bpmn:userTask>

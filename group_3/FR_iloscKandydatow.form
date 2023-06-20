@@ -1,0 +1,29 @@
+{
+  "components": [
+    {
+      "text": "# Wprowadź liczbę kandydatów",
+      "type": "text",
+      "id": "Field_1ot91h8"
+    },
+    {
+      "label": "Number",
+      "type": "number",
+      "id": "Field_16rkumi",
+      "key": "iloscKandydatow",
+      "description": "Liczba kandydatów",
+      "defaultValue": 0,
+      "validate": {
+        "required": true
+      }
+    }
+  ],
+  "type": "default",
+  "id": "FR_iloscKandydatow",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
