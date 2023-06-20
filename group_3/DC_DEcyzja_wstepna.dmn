@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" id="DC_Decyzja_Wstepna" name="Dec wstępna" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <decision id="DC_Decyzja_Wstepna_TSK" name="Decyzja wstepna">
+    <decisionTable id="DecisionTable_1hk4mrb" hitPolicy="FIRST">
+      <input id="Input_1" camunda:inputVariable="placa">
+        <inputExpression id="InputExpression_1" typeRef="integer">
+          <text>placa</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0m9oe3w" biodi:width="192" camunda:inputVariable="bylJuz">
+        <inputExpression id="LiteralExpression_1ig67gn" typeRef="boolean">
+          <text>bylJuz</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" name="przyjety" typeRef="boolean" biodi:width="192" />
+      <rule id="DecisionRule_17wnoks">
+        <inputEntry id="UnaryTests_1qlrhtr">
+          <text>&gt;20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17pz163">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0u3dsxi">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0w0kh4q">
+        <inputEntry id="UnaryTests_1uz3o3a">
+          <text>&gt;20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wij29j">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1v7rnwl">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0yc1xnz">
+        <inputEntry id="UnaryTests_1ghfi8x">
+          <text>&lt;=20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1rr7xc3">
+          <text>true</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1i4tze8">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ot164m">
+        <inputEntry id="UnaryTests_1khdapc">
+          <text>&lt;=20000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18fh02o">
+          <text>false</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09pcphb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="DC_Decyzja_Wstepna_TSK">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
