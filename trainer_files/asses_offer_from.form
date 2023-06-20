@@ -1,0 +1,36 @@
+{
+  "components": [
+    {
+      "text": "# Assses is offer is doable",
+      "type": "text",
+      "id": "Field_0ygd10h"
+    },
+    {
+      "label": "Is offer doable",
+      "type": "checkbox",
+      "id": "Field_09gxqa5",
+      "key": "isDoable"
+    },
+    {
+      "label": "Write offer description",
+      "type": "textfield",
+      "id": "Field_0n5752b",
+      "key": "offerDescription",
+      "defaultValue": "Some description",
+      "validate": {
+        "required": false,
+        "minLength": 0,
+        "maxLength": 50
+      }
+    }
+  ],
+  "type": "default",
+  "id": "FR_001_ASSESS_OFFER",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
