@@ -1,0 +1,35 @@
+{
+  "components": [
+    {
+      "text": "# Weryfikacja wniosku",
+      "type": "text",
+      "id": "Field_18pzlau"
+    },
+    {
+      "values": [
+        {
+          "label": "Tak",
+          "value": "yes"
+        },
+        {
+          "label": "Nie",
+          "value": "no"
+        }
+      ],
+      "label": "Decyzja",
+      "type": "radio",
+      "id": "Field_0d6itkx",
+      "key": "accepted",
+      "defaultValue": "no"
+    }
+  ],
+  "type": "default",
+  "id": "Group2_form_weryf",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}

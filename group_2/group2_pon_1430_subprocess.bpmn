@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_15lxvxv" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:collaboration id="Group2_subprocess">
+    <bpmn:participant id="Participant_0228lej" name="Rejestracja_nadgodzin" processRef="Nadgodziny" />
+  </bpmn:collaboration>
+  <bpmn:process id="Nadgodziny" isExecutable="true">
+    <bpmn:laneSet id="LaneSet_1epijtb">
+      <bpmn:lane id="Lane_1ouzo85" name="Pracownik">
+        <bpmn:flowNodeRef>Event_16s44mc</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_17gpd7c</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Nadgodziny_Rejestracja</bpmn:flowNodeRef>
+        <bpmn:childLaneSet id="LaneSet_1plwj66">
+          <bpmn:lane id="Lane_124l3ki">
+            <bpmn:flowNodeRef>Event_16s44mc</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Activity_17gpd7c</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Nadgodziny_Rejestracja</bpmn:flowNodeRef>
+          </bpmn:lane>
+        </bpmn:childLaneSet>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1sa95sm" name="Kierownik">
+        <bpmn:flowNodeRef>Gateway_0sbmmmj</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Nadgodziny_Weryfikacja_wniosku</bpmn:flowNodeRef>
+        <bpmn:childLaneSet id="LaneSet_0qrawf4">
+          <bpmn:lane id="Lane_13ckp5i">
+            <bpmn:flowNodeRef>Gateway_0sbmmmj</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Nadgodziny_Weryfikacja_wniosku</bpmn:flowNodeRef>
+          </bpmn:lane>
+        </bpmn:childLaneSet>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_1rnj64v" name="Menedżer">
+        <bpmn:flowNodeRef>Nadgodziny_Akceptacja</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_0fs27ik</bpmn:flowNodeRef>
+        <bpmn:childLaneSet id="LaneSet_11ghyv9">
+          <bpmn:lane id="Lane_0hycqja">
+            <bpmn:flowNodeRef>Nadgodziny_Akceptacja</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Gateway_0fs27ik</bpmn:flowNodeRef>
+          </bpmn:lane>
+        </bpmn:childLaneSet>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:endEvent id="Event_16s44mc">
+      <bpmn:incoming>Flow_1eyv6av</bpmn:incoming>
+      <bpmn:incoming>Flow_05ez5ja</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_176q70m" sourceRef="StartEvent_1" targetRef="Nadgodziny_Rejestracja" />
+    <bpmn:sequenceFlow id="Flow_0kkk545" sourceRef="Nadgodziny_Weryfikacja_wniosku" targetRef="Gateway_0sbmmmj" />
+    <bpmn:exclusiveGateway id="Gateway_0sbmmmj" name="wniosek zweryfikowany?">
+      <bpmn:incoming>Flow_0kkk545</bpmn:incoming>
+      <bpmn:outgoing>Flow_1eyv6av</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1in7v3a</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1eyv6av" name="nie" sourceRef="Gateway_0sbmmmj" targetRef="Event_16s44mc">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${accepted==false}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1in7v3a" name="tak" sourceRef="Gateway_0sbmmmj" targetRef="Nadgodziny_Akceptacja">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${accepted==true}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:exclusiveGateway id="Gateway_0fs27ik" name="wniosek zaakceptowany?" default="Flow_1ji1d8f">
+      <bpmn:incoming>Flow_1vt8c0a</bpmn:incoming>
+      <bpmn:outgoing>Flow_1q2mgk8</bpmn:outgoing>
+      <bpmn:outgoing>Flow_1ji1d8f</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="Flow_1vt8c0a" sourceRef="Nadgodziny_Akceptacja" targetRef="Gateway_0fs27ik" />
+    <bpmn:sequenceFlow id="Flow_1q2mgk8" name="tak" sourceRef="Gateway_0fs27ik" targetRef="Activity_17gpd7c">
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${accepted2==1}</bpmn:conditionExpression>
+    </bpmn:sequenceFlow>
+    <bpmn:sequenceFlow id="Flow_1ji1d8f" name="nie" sourceRef="Gateway_0fs27ik" targetRef="Activity_17gpd7c" />
+    <bpmn:userTask id="Nadgodziny_Akceptacja" name="Akceptacja">
+      <bpmn:incoming>Flow_1in7v3a</bpmn:incoming>
+      <bpmn:outgoing>Flow_1vt8c0a</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:userTask id="Activity_17gpd7c" name="Finish_process">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="Input_3gb44vs" />
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_1ji1d8f</bpmn:incoming>
+      <bpmn:incoming>Flow_1q2mgk8</bpmn:incoming>
+      <bpmn:outgoing>Flow_05ez5ja</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_05ez5ja" sourceRef="Activity_17gpd7c" targetRef="Event_16s44mc" />
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_176q70m</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:userTask id="Nadgodziny_Rejestracja" name="Rejestracja nadgodzin">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="Input_3gb44vs" />
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_176q70m</bpmn:incoming>
+      <bpmn:outgoing>Flow_039ajvs</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:callActivity id="Nadgodziny_Weryfikacja_wniosku" name="Weryfikacja wniosku" calledElement="Group2_sub_task">
+      <bpmn:extensionElements>
+        <camunda:out variables="all" />
+      </bpmn:extensionElements>
+      <bpmn:incoming>Flow_039ajvs</bpmn:incoming>
+      <bpmn:outgoing>Flow_0kkk545</bpmn:outgoing>
+    </bpmn:callActivity>
+    <bpmn:sequenceFlow id="Flow_039ajvs" sourceRef="Nadgodziny_Rejestracja" targetRef="Nadgodziny_Weryfikacja_wniosku" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Group2_subprocess">
+      <bpmndi:BPMNShape id="Participant_0228lej_di" bpmnElement="Participant_0228lej" isHorizontal="true">
+        <dc:Bounds x="129" y="79" width="791" height="490" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1rnj64v_di" bpmnElement="Lane_1rnj64v" isHorizontal="true">
+        <dc:Bounds x="159" y="449" width="761" height="120" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0hycqja_di" bpmnElement="Lane_0hycqja" isHorizontal="true">
+        <dc:Bounds x="189" y="449" width="731" height="120" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1sa95sm_di" bpmnElement="Lane_1sa95sm" isHorizontal="true">
+        <dc:Bounds x="159" y="266.5" width="761" height="182.5" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_13ckp5i_di" bpmnElement="Lane_13ckp5i" isHorizontal="true">
+        <dc:Bounds x="189" y="266.5" width="731" height="182.5" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_1ouzo85_di" bpmnElement="Lane_1ouzo85" isHorizontal="true">
+        <dc:Bounds x="159" y="79" width="761" height="187.5" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_124l3ki_di" bpmnElement="Lane_124l3ki" isHorizontal="true">
+        <dc:Bounds x="189" y="79" width="731" height="187.5" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_16s44mc_di" bpmnElement="Event_16s44mc">
+        <dc:Bounds x="762" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0sbmmmj_di" bpmnElement="Gateway_0sbmmmj" isMarkerVisible="true">
+        <dc:Bounds x="485" y="335" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="474" y="305" width="77" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0fs27ik_di" bpmnElement="Gateway_0fs27ik" isMarkerVisible="true">
+        <dc:Bounds x="625" y="485" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="610" y="542" width="81" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0nlwtoo_di" bpmnElement="Nadgodziny_Akceptacja">
+        <dc:Bounds x="460" y="470" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_1qroopu" bpmnElement="Activity_17gpd7c">
+        <dc:Bounds x="720" y="210" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="202" y="152" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0s1a13m_di" bpmnElement="Nadgodziny_Rejestracja">
+        <dc:Bounds x="310" y="140" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_122o7i7_di" bpmnElement="Nadgodziny_Weryfikacja_wniosku">
+        <dc:Bounds x="300" y="320" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_176q70m_di" bpmnElement="Flow_176q70m">
+        <di:waypoint x="238" y="170" />
+        <di:waypoint x="274" y="170" />
+        <di:waypoint x="274" y="180" />
+        <di:waypoint x="310" y="180" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kkk545_di" bpmnElement="Flow_0kkk545">
+        <di:waypoint x="400" y="360" />
+        <di:waypoint x="485" y="360" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1eyv6av_di" bpmnElement="Flow_1eyv6av">
+        <di:waypoint x="535" y="360" />
+        <di:waypoint x="580" y="360" />
+        <di:waypoint x="580" y="117" />
+        <di:waypoint x="762" y="117" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="588" y="236" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1in7v3a_di" bpmnElement="Flow_1in7v3a">
+        <di:waypoint x="510" y="385" />
+        <di:waypoint x="510" y="470" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="518" y="425" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1vt8c0a_di" bpmnElement="Flow_1vt8c0a">
+        <di:waypoint x="560" y="510" />
+        <di:waypoint x="625" y="510" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1q2mgk8_di" bpmnElement="Flow_1q2mgk8">
+        <di:waypoint x="650" y="485" />
+        <di:waypoint x="650" y="250" />
+        <di:waypoint x="720" y="250" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="658" y="363" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ji1d8f_di" bpmnElement="Flow_1ji1d8f">
+        <di:waypoint x="675" y="510" />
+        <di:waypoint x="770" y="509" />
+        <di:waypoint x="770" y="290" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="716" y="492" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05ez5ja_di" bpmnElement="Flow_05ez5ja">
+        <di:waypoint x="770" y="210" />
+        <di:waypoint x="770" y="173" />
+        <di:waypoint x="780" y="173" />
+        <di:waypoint x="780" y="135" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_039ajvs_di" bpmnElement="Flow_039ajvs">
+        <di:waypoint x="360" y="220" />
+        <di:waypoint x="360" y="270" />
+        <di:waypoint x="320" y="270" />
+        <di:waypoint x="320" y="320" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

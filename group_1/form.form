@@ -1,0 +1,37 @@
+{
+  "components": [
+    {
+      "text": "# specify order request",
+      "type": "text",
+      "id": "Field_1alj8rl"
+    },
+    {
+      "label": "invoice correct",
+      "type": "checkbox",
+      "id": "Field_13zw0vv",
+      "key": "isdoable",
+      "defaultValue": false
+    },
+    {
+      "label": "Write order list",
+      "type": "textfield",
+      "id": "Field_1g5p9e4",
+      "key": "offerDesc",
+      "validate": {
+        "required": true,
+        "minLength": 0,
+        "maxLength": 50
+      },
+      "defaultValue": "some desc"
+    }
+  ],
+  "type": "default",
+  "id": "FR_001_Asses_offer",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
