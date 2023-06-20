@@ -187,7 +187,7 @@
       <bpmn:outgoing>Flow_0251rh1</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0a668wv" sourceRef="Activity_080md59" targetRef="Activity_0xnqhcn" />
-    <bpmn:businessRuleTask id="Activity_080md59" camunda:resultVariable="czyPrzyjacPodanie" camunda:decisionRef="DC_Decyzja_Wstepna" camunda:mapDecisionResult="singleEntry">
+    <bpmn:businessRuleTask id="Activity_080md59" camunda:resultVariable="czyPrzyjacPodanie" camunda:decisionRef="DC_Decyzja_Wstepna_TSK" camunda:mapDecisionResult="singleEntry">
       <bpmn:incoming>Flow_0251rh1</bpmn:incoming>
       <bpmn:outgoing>Flow_0a668wv</bpmn:outgoing>
     </bpmn:businessRuleTask>
