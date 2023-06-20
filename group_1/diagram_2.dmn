@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_1axqqyj" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <decision id="Decision1" name="Decision 1">
+    <decisionTable id="DecisionTable_0vjafjd" hitPolicy="FIRST">
+      <input id="Input_1" label="Kwota większa od" biodi:width="252" camunda:inputVariable="kwota">
+        <inputExpression id="InputExpression_1" typeRef="integer">
+          <text>KwotaWieksza</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0w7b7yb" label="Data mniejsza niż 10 dni" biodi:width="192" camunda:inputVariable="DataPlatnosci">
+        <inputExpression id="LiteralExpression_120bs81" typeRef="date" expressionLanguage="feel">
+          <text>date(DataMniejsza)</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_00zotua" label="Priorytet" name="Priorytet" typeRef="string" />
+      <rule id="DecisionRule_0sgc5eu">
+        <inputEntry id="UnaryTests_16xlwpj">
+          <text>&gt; 5000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1y42r0a">
+          <text>&lt; today() + P10D</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y5xc1k">
+          <text>"Wysoki"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ywcaja">
+        <inputEntry id="UnaryTests_1yfwewl">
+          <text>&gt; 5000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b34z0u">
+          <text>&gt;= today() + duration("P10D")</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15o6g7v">
+          <text>"Wysoki"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1fn8vm6">
+        <inputEntry id="UnaryTests_1lygx83">
+          <text>&lt;= 5000</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0nb1w60">
+          <text>&lt; today() + P10D</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0gx77rw">
+          <text>"Wysoki"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0n67ldv">
+        <inputEntry id="UnaryTests_1ki67gn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0jatc8y">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oxvf59">
+          <text>"Niski"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Decision1">
+        <dc:Bounds height="80" width="180" x="160" y="120" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

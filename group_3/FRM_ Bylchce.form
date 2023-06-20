@@ -1,0 +1,26 @@
+{
+  "components": [
+    {
+      "label": "Ile chce",
+      "type": "number",
+      "id": "Field_0md5cek",
+      "key": "placa",
+      "defaultValue": 50
+    },
+    {
+      "label": "Czy już był",
+      "type": "checkbox",
+      "id": "Field_08fl3zd",
+      "key": "bylJuz"
+    }
+  ],
+  "type": "default",
+  "id": "FRM_Byl_Chce",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}

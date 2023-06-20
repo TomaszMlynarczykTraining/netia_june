@@ -4,34 +4,48 @@
     <bpmn:startEvent id="StartEvent_1">
       <bpmn:outgoing>Flow_0f30afs</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:sequenceFlow id="Flow_0f30afs" sourceRef="StartEvent_1" targetRef="Activity_0sglft2" />
+    <bpmn:sequenceFlow id="Flow_0f30afs" sourceRef="StartEvent_1" targetRef="Activity_1hfm9hy" />
     <bpmn:endEvent id="Event_0d0mp2q">
       <bpmn:incoming>Flow_1sebec3</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:sequenceFlow id="Flow_1sebec3" sourceRef="Activity_0sglft2" targetRef="Event_0d0mp2q" />
     <bpmn:userTask id="Activity_0sglft2" name="Send email with summary">
-      <bpmn:incoming>Flow_0f30afs</bpmn:incoming>
+      <bpmn:incoming>Flow_0z0hp60</bpmn:incoming>
       <bpmn:outgoing>Flow_1sebec3</bpmn:outgoing>
     </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_0z0hp60" sourceRef="Activity_1hfm9hy" targetRef="Activity_0sglft2" />
+    <bpmn:scriptTask id="Activity_1hfm9hy" name="Modify text" scriptFormat="groovy">
+      <bpmn:incoming>Flow_0f30afs</bpmn:incoming>
+      <bpmn:outgoing>Flow_0z0hp60</bpmn:outgoing>
+      <bpmn:script>execution.setVariable(textModified, "someText" + execution.getVariable(textToModify))</bpmn:script>
+    </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PR002_Send_Email">
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
-        <dc:Bounds x="179" y="99" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0d0mp2q_di" bpmnElement="Event_0d0mp2q">
-        <dc:Bounds x="432" y="99" width="36" height="36" />
+        <dc:Bounds x="612" y="99" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0tcxgu9_di" bpmnElement="Activity_0sglft2">
-        <dc:Bounds x="270" y="77" width="100" height="80" />
+        <dc:Bounds x="450" y="77" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_0f30afs_di" bpmnElement="Flow_0f30afs">
-        <di:waypoint x="215" y="117" />
-        <di:waypoint x="270" y="117" />
-      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0mtk3lj_di" bpmnElement="Activity_1hfm9hy">
+        <dc:Bounds x="250" y="77" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1sebec3_di" bpmnElement="Flow_1sebec3">
-        <di:waypoint x="370" y="117" />
-        <di:waypoint x="432" y="117" />
+        <di:waypoint x="550" y="117" />
+        <di:waypoint x="612" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0z0hp60_di" bpmnElement="Flow_0z0hp60">
+        <di:waypoint x="350" y="117" />
+        <di:waypoint x="450" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0f30afs_di" bpmnElement="Flow_0f30afs">
+        <di:waypoint x="188" y="117" />
+        <di:waypoint x="250" y="117" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
