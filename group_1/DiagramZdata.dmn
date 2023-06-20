@@ -7,7 +7,7 @@
           <text>KwotaWieksza</text>
         </inputExpression>
       </input>
-      <input id="InputClause_0w7b7yb" label="Data mniejsza niż 10 dni" biodi:width="192" camunda:inputVariable="DataPlatnosci">
+      <input id="InputClause_0w7b7yb" label="Data mniejsza niż 10 dni " biodi:width="192" camunda:inputVariable="DataPlatnosci">
         <inputExpression id="LiteralExpression_120bs81" typeRef="date" expressionLanguage="feel">
           <text>date(DataMniejsza)</text>
         </inputExpression>
