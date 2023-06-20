@@ -17,7 +17,7 @@
     <bpmn:scriptTask id="Activity_1hfm9hy" name="Modify text" scriptFormat="groovy">
       <bpmn:incoming>Flow_0f30afs</bpmn:incoming>
       <bpmn:outgoing>Flow_0z0hp60</bpmn:outgoing>
-      <bpmn:script>execution.setVariable(textModified, "someText" + execution.getVariable(textToModify));</bpmn:script>
+      <bpmn:script>execution.setVariable(textModified, "someText" + execution.getVariable(textToModify))</bpmn:script>
     </bpmn:scriptTask>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
