@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1vphl64" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_1vphl64" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
   <bpmn:collaboration id="Collaboration_1frxcpx">
     <bpmn:participant id="Participant_0qgfu2b" name="Zadanie" processRef="ZD_001_ABC" />
   </bpmn:collaboration>
@@ -46,7 +46,7 @@
       <bpmn:outgoing>Flow_170vzsf</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_170vzsf" sourceRef="Event_12024cm" targetRef="Activity_0n31f43" />
-    <bpmn:userTask id="Activity_0n31f43" name="wprowadzenie zamówienia">
+    <bpmn:userTask id="Activity_0n31f43" name="wprowadzenie zamówienia" camunda:formRef="FR_001_Asses_offer" camunda:formRefBinding="latest">
       <bpmn:incoming>Flow_170vzsf</bpmn:incoming>
       <bpmn:outgoing>Flow_1acxnah</bpmn:outgoing>
     </bpmn:userTask>
