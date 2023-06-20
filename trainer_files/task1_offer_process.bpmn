@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0xxjshg" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0xxjshg" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
   <bpmn:collaboration id="Collaboration_0v82cwu">
     <bpmn:participant id="Participant_0e9rtrd" name="Trade offer" processRef="PR_001_TRADE_OFFER" />
   </bpmn:collaboration>
@@ -52,7 +52,7 @@
       <bpmn:outgoing>Flow_0s9bg4c</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_0s9bg4c" sourceRef="StartEvent_1" targetRef="PR_001_UT_001_ASSESS_OFFER" />
-    <bpmn:userTask id="PR_001_UT_001_ASSESS_OFFER" name="Asses if offer is doable">
+    <bpmn:userTask id="PR_001_UT_001_ASSESS_OFFER" name="Asses if offer is doable" camunda:formRef="FR_001_ASSESS_OFFER" camunda:formRefBinding="latest">
       <bpmn:extensionElements />
       <bpmn:incoming>Flow_0s9bg4c</bpmn:incoming>
       <bpmn:outgoing>Flow_0h45nix</bpmn:outgoing>
@@ -106,12 +106,6 @@
       <bpmn:incoming>Flow_14l1x75</bpmn:incoming>
     </bpmn:endEvent>
     <bpmn:subProcess id="Activity_19bewod" triggeredByEvent="true">
-      <bpmn:startEvent id="Event_1e69glt">
-        <bpmn:outgoing>Flow_0vmk9ba</bpmn:outgoing>
-        <bpmn:timerEventDefinition id="TimerEventDefinition_1j2k9li">
-          <bpmn:timeDate xsi:type="bpmn:tFormalExpression">2023-06-20T11:05:14</bpmn:timeDate>
-        </bpmn:timerEventDefinition>
-      </bpmn:startEvent>
       <bpmn:endEvent id="Event_07wvibr">
         <bpmn:incoming>Flow_12l3v0q</bpmn:incoming>
       </bpmn:endEvent>
@@ -121,8 +115,13 @@
         <bpmn:incoming>Flow_0vmk9ba</bpmn:incoming>
         <bpmn:outgoing>Flow_12l3v0q</bpmn:outgoing>
       </bpmn:userTask>
+      <bpmn:startEvent id="Event_1e69glt">
+        <bpmn:outgoing>Flow_0vmk9ba</bpmn:outgoing>
+        <bpmn:signalEventDefinition id="SignalEventDefinition_1a27ejv" signalRef="Signal_2af3mod" />
+      </bpmn:startEvent>
     </bpmn:subProcess>
   </bpmn:process>
+  <bpmn:signal id="Signal_2af3mod" name="Signal_2af3mod" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_0v82cwu">
       <bpmndi:BPMNShape id="Participant_0e9rtrd_di" bpmnElement="Participant_0e9rtrd" isHorizontal="true">
@@ -209,15 +208,15 @@
       <bpmndi:BPMNShape id="Activity_1k64roe_di" bpmnElement="Activity_19bewod" isExpanded="true">
         <dc:Bounds x="690" y="890" width="412" height="190" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0p18yf9_di" bpmnElement="Event_1e69glt">
-        <dc:Bounds x="730" y="972" width="36" height="36" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_07wvibr_di" bpmnElement="Event_07wvibr">
         <dc:Bounds x="1002" y="972" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1cufpbu_di" bpmnElement="Activity_188jjt8">
         <dc:Bounds x="850" y="950" width="100" height="80" />
         <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1o41xtu_di" bpmnElement="Event_1e69glt">
+        <dc:Bounds x="730" y="972" width="36" height="36" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_12l3v0q_di" bpmnElement="Flow_12l3v0q">
         <di:waypoint x="950" y="990" />
