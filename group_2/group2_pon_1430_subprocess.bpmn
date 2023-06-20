@@ -87,8 +87,13 @@
     </bpmn:startEvent>
     <bpmn:userTask id="Nadgodziny_Rejestracja" name="Rejestracja nadgodzin">
       <bpmn:extensionElements>
+        <camunda:executionListener expression="${execution.setVariable(&#34;dayofweek&#34;,&#34;tuesday&#34;)}" event="end" />
+        <camunda:properties>
+          <camunda:property />
+        </camunda:properties>
         <camunda:inputOutput>
-          <camunda:inputParameter name="Input_3gb44vs" />
+          <camunda:inputParameter name="dayofmonth">Czerwiec</camunda:inputParameter>
+          <camunda:outputParameter name="dayofmonth2">Czerwiec2</camunda:outputParameter>
         </camunda:inputOutput>
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_176q70m</bpmn:incoming>
@@ -97,6 +102,7 @@
     <bpmn:callActivity id="Nadgodziny_Weryfikacja_wniosku" name="Weryfikacja wniosku" calledElement="Group2_sub_task">
       <bpmn:extensionElements>
         <camunda:out variables="all" />
+        <camunda:in source="dayofweek" target="dayofweekmapped" />
       </bpmn:extensionElements>
       <bpmn:incoming>Flow_039ajvs</bpmn:incoming>
       <bpmn:outgoing>Flow_0kkk545</bpmn:outgoing>

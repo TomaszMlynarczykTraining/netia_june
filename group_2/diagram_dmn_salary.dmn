@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Diagram_dmn_salary_group2" name="Diagram_dmn_salary_group2" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <decision id="Diagram_dmn_salary_group2_dmn_table_1" name="Salary rules">
+    <informationRequirement id="InformationRequirement_1g2zgsx">
+      <requiredInput href="#InputData_years_worked" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0pgbwve">
+      <requiredInput href="#InputData_position_name" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_07bklvg" hitPolicy="FIRST">
+      <input id="Input_1" label="Position name">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text>years_worked</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1wxan2r" label="Years worked">
+        <inputExpression id="LiteralExpression_1ecau24" typeRef="integer">
+          <text>years_worked</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Salary" name="salary_output" typeRef="integer" />
+      <rule id="DecisionRule_07gz1gi">
+        <inputEntry id="UnaryTests_1148f0c">
+          <text>"Developer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fu375t">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ro5nub">
+          <text>8000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ovscuj">
+        <inputEntry id="UnaryTests_0tti4xm">
+          <text>"Consultant"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vnw6n6">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0q8ydad">
+          <text>5000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dpzrt8">
+        <inputEntry id="UnaryTests_1y52u37">
+          <text>"Accountant"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b0jq4k">
+          <text>1</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1al5bdv">
+          <text>2000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l4kxgp">
+        <inputEntry id="UnaryTests_0ionb6h">
+          <text>"Developer"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17sxv4e">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yrgqnu">
+          <text>9000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_14jopz6">
+        <inputEntry id="UnaryTests_036uol8">
+          <text>"Consultant"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0btaaab">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17u63lu">
+          <text>6000</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e7i21r">
+        <inputEntry id="UnaryTests_1rfe92j">
+          <text>"Accountant"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vvzvzg">
+          <text>2</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yv7pud">
+          <text>3000</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_years_worked" name="years_worked" />
+  <inputData id="InputData_position_name" name="position_name" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Diagram_dmn_salary_group2_dmn_table_1">
+        <dc:Bounds height="80" width="180" x="230" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1n6c5ks" dmnElementRef="InputData_years_worked">
+        <dc:Bounds height="45" width="125" x="158" y="228" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_02bbedx" dmnElementRef="InputData_position_name">
+        <dc:Bounds height="45" width="125" x="358" y="229" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_11n6z20" dmnElementRef="InformationRequirement_1g2zgsx">
+        <di:waypoint x="221" y="228" />
+        <di:waypoint x="290" y="200" />
+        <di:waypoint x="290" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_04ywrwl" dmnElementRef="InformationRequirement_0pgbwve">
+        <di:waypoint x="421" y="229" />
+        <di:waypoint x="350" y="200" />
+        <di:waypoint x="350" y="180" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

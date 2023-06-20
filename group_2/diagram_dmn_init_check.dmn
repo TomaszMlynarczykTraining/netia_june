@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Diagram_dmn_verification_group2" name="Diagram_dmn_verification_group2" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <decision id="Diagram_dmn_verification_group2_dmn_table_1" name="Init verification">
+    <informationRequirement id="InformationRequirement_1g2zgsx">
+      <requiredInput href="#InputData_overwork_hours" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0pgbwve">
+      <requiredInput href="#InputData_date_of_document_day" />
+    </informationRequirement>
+    <decisionTable id="DecisionTable_07bklvg" hitPolicy="FIRST">
+      <input id="Input_1" label="Liczba nadgodzin">
+        <inputExpression id="InputExpression_1" typeRef="integer">
+          <text>overwork_hours</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1wxan2r" label="Dzien miesiaca wniosku">
+        <inputExpression id="LiteralExpression_1ecau24" typeRef="integer">
+          <text>date_of_document_day</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Decyzja weryfikacji" name="verification_result" typeRef="string" />
+      <rule id="DecisionRule_07gz1gi">
+        <inputEntry id="UnaryTests_1148f0c">
+          <text>&gt;30</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1fu375t">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ro5nub">
+          <text>"nok"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ovscuj">
+        <inputEntry id="UnaryTests_0tti4xm">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vnw6n6">
+          <text>29</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0q8ydad">
+          <text>"nok"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dpzrt8">
+        <inputEntry id="UnaryTests_1y52u37">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0b0jq4k">
+          <text>30</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1al5bdv">
+          <text>"nok"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0l4kxgp">
+        <inputEntry id="UnaryTests_0ionb6h">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_17sxv4e">
+          <text>31</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1yrgqnu">
+          <text>"nok"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e7i21r">
+        <inputEntry id="UnaryTests_1rfe92j">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0vvzvzg">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0yv7pud">
+          <text>"ok"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_overwork_hours" name="overwork_hours" />
+  <inputData id="InputData_date_of_document_day" name="date_of_document_day" />
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Diagram_dmn_verification_group2_dmn_table_1">
+        <dc:Bounds height="80" width="180" x="230" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1n6c5ks" dmnElementRef="InputData_overwork_hours">
+        <dc:Bounds height="45" width="125" x="158" y="228" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_02bbedx" dmnElementRef="InputData_date_of_document_day">
+        <dc:Bounds height="45" width="125" x="358" y="229" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_11n6z20" dmnElementRef="InformationRequirement_1g2zgsx">
+        <di:waypoint x="221" y="228" />
+        <di:waypoint x="290" y="200" />
+        <di:waypoint x="290" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_04ywrwl" dmnElementRef="InformationRequirement_0pgbwve">
+        <di:waypoint x="421" y="229" />
+        <di:waypoint x="350" y="200" />
+        <di:waypoint x="350" y="180" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
