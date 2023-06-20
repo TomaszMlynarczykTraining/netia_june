@@ -61,6 +61,9 @@
       <bpmn:outgoing>Flow_1e01aj9</bpmn:outgoing>
     </bpmn:exclusiveGateway>
     <bpmn:callActivity id="Activity_0l9b2j4" name="send mail with summary" calledElement="PR0001_Send">
+      <bpmn:extensionElements>
+        <camunda:in source="tresc" target="nowaTresc" />
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_1e01aj9</bpmn:incoming>
       <bpmn:outgoing>Flow_0nf4aot</bpmn:outgoing>
     </bpmn:callActivity>
@@ -102,7 +105,7 @@
     <bpmn:subProcess id="Activity_18glcws" triggeredByEvent="true">
       <bpmn:startEvent id="Event_1pg9s73">
         <bpmn:outgoing>Flow_0drkci4</bpmn:outgoing>
-        <bpmn:signalEventDefinition id="SignalEventDefinition_0n62ec7" />
+        <bpmn:signalEventDefinition id="SignalEventDefinition_0n62ec7" signalRef="Signal_25vvl5v" />
       </bpmn:startEvent>
       <bpmn:task id="Activity_0n9lwas" name="create offer">
         <bpmn:incoming>Flow_0drkci4</bpmn:incoming>
@@ -115,6 +118,7 @@
       <bpmn:sequenceFlow id="Flow_0rgrv5m" sourceRef="Activity_0n9lwas" targetRef="Event_0gdjupr" />
     </bpmn:subProcess>
   </bpmn:process>
+  <bpmn:signal id="Signal_25vvl5v" name="Signal_25vvl5v" />
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_16ljxiz">
       <bpmndi:BPMNShape id="Participant_1v1ipmv_di" bpmnElement="Participant_1v1ipmv" isHorizontal="true">

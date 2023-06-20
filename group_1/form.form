@@ -23,6 +23,14 @@
         "maxLength": 50
       },
       "defaultValue": "some desc"
+    },
+    {
+      "label": "Text field",
+      "type": "textfield",
+      "id": "Field_0zia9bi",
+      "key": "tresc",
+      "description": "tresc do przekazania",
+      "defaultValue": "tresc domyslna"
     }
   ],
   "type": "default",
