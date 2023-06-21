@@ -1,0 +1,10 @@
+{
+        "list": {
+            "type": "Object",
+            "value": "[\"kandydat1\",\"kandydat2\"]",
+            "valueInfo": {
+                "objectTypeName": "java.util.ArrayList",
+                "serializationDataFormat":"application/json"
+            }
+        }
+ }
