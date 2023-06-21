@@ -1,0 +1,33 @@
+{
+  "components": [
+    {
+      "text": "Podaj dane:",
+      "type": "text",
+      "id": "Field_0f2lqmt"
+    },
+    {
+      "label": "Wnioskowana kwota",
+      "type": "number",
+      "id": "Field_0trsl97",
+      "key": "kwota_aktualna",
+      "description": "Kwota",
+      "defaultValue": 1000
+    },
+    {
+      "label": "Liczba pożyczek z przeszłości",
+      "type": "number",
+      "id": "Field_1of5z5c",
+      "key": "liczba_poprzednich",
+      "defaultValue": 0
+    }
+  ],
+  "type": "default",
+  "id": "FormLongTermLoanInit",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}

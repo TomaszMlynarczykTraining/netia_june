@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0de7u7k" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:process id="Process_Message_Child_01" name="Process_Message_Child" isExecutable="true">
+    <bpmn:startEvent id="Event_0ktrxkn">
+      <bpmn:outgoing>Flow_1xyvipp</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0xdpya3" messageRef="Message_2g3oj7v" />
+    </bpmn:startEvent>
+    <bpmn:userTask id="Activity_10h4i6p" name="Check task">
+      <bpmn:incoming>Flow_1xyvipp</bpmn:incoming>
+      <bpmn:outgoing>Flow_1u58te8</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="Flow_1xyvipp" sourceRef="Event_0ktrxkn" targetRef="Activity_10h4i6p" />
+    <bpmn:endEvent id="Event_1ytm8q5">
+      <bpmn:incoming>Flow_1u58te8</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1u58te8" sourceRef="Activity_10h4i6p" targetRef="Event_1ytm8q5" />
+  </bpmn:process>
+  <bpmn:message id="Message_2g3oj7v" name="MSG_FROM_Parent" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_Message_Child_01">
+      <bpmndi:BPMNShape id="Event_03qs5t1_di" bpmnElement="Event_0ktrxkn">
+        <dc:Bounds x="152" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1n4r43q_di" bpmnElement="Activity_10h4i6p">
+        <dc:Bounds x="260" y="120" width="100" height="80" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1ytm8q5_di" bpmnElement="Event_1ytm8q5">
+        <dc:Bounds x="432" y="142" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1xyvipp_di" bpmnElement="Flow_1xyvipp">
+        <di:waypoint x="188" y="160" />
+        <di:waypoint x="260" y="160" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1u58te8_di" bpmnElement="Flow_1u58te8">
+        <di:waypoint x="360" y="160" />
+        <di:waypoint x="432" y="160" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
