@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_0nf3mo1" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="5.8.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.18.0">
+  <bpmn:process id="PR004_MulitInstance" name="Mulit instance process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_043dt87</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_043dt87" sourceRef="StartEvent_1" targetRef="Activity_1p5hdnr" />
+    <bpmn:endEvent id="Event_0fah1c2">
+      <bpmn:incoming>Flow_11yhff4</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_11yhff4" sourceRef="Activity_1p5hdnr" targetRef="Event_0fah1c2" />
+    <bpmn:userTask id="Activity_1p5hdnr" name="Multi instance user task">
+      <bpmn:incoming>Flow_043dt87</bpmn:incoming>
+      <bpmn:outgoing>Flow_11yhff4</bpmn:outgoing>
+      <bpmn:multiInstanceLoopCharacteristics isSequential="true" camunda:collection="list" camunda:elementVariable="user" />
+    </bpmn:userTask>
+    <bpmn:textAnnotation id="TextAnnotation_0qde65l">
+      <bpmn:text>For every user</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_1rpvqce" sourceRef="Activity_1p5hdnr" targetRef="TextAnnotation_0qde65l" />
+    <bpmn:textAnnotation id="TextAnnotation_1ukfsun">
+      <bpmn:text>{
+        "list": {
+            "type": "Object",
+            "value": "[\"user1\",\"user2\"]",
+            "valueInfo": {
+                "objectTypeName": "java.util.ArrayList",
+                "serializationDataFormat":"application/json"
+            }
+        }
+ }</bpmn:text>
+    </bpmn:textAnnotation>
+    <bpmn:association id="Association_0j4ufpj" sourceRef="Activity_1p5hdnr" targetRef="TextAnnotation_1ukfsun" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="PR004_MulitInstance">
+      <bpmndi:BPMNShape id="TextAnnotation_0qde65l_di" bpmnElement="TextAnnotation_0qde65l">
+        <dc:Bounds x="420" y="50" width="100" height="30" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1ukfsun_di" bpmnElement="TextAnnotation_1ukfsun">
+        <dc:Bounds x="380" y="350" width="520" height="160" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="179" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0fah1c2_di" bpmnElement="Event_0fah1c2">
+        <dc:Bounds x="492" y="179" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_00t75j4_di" bpmnElement="Activity_1p5hdnr">
+        <dc:Bounds x="300" y="157" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1rpvqce_di" bpmnElement="Association_1rpvqce">
+        <di:waypoint x="386" y="157" />
+        <di:waypoint x="456" y="80" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Association_0j4ufpj_di" bpmnElement="Association_0j4ufpj">
+        <di:waypoint x="369" y="237" />
+        <di:waypoint x="423" y="350" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_043dt87_di" bpmnElement="Flow_043dt87">
+        <di:waypoint x="215" y="197" />
+        <di:waypoint x="300" y="197" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_11yhff4_di" bpmnElement="Flow_11yhff4">
+        <di:waypoint x="400" y="197" />
+        <di:waypoint x="492" y="197" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
