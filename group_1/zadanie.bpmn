@@ -47,6 +47,11 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_170vzsf" sourceRef="Event_12024cm" targetRef="Activity_0n31f43" />
     <bpmn:userTask id="Activity_0n31f43" name="wprowadzenie zamówienia" camunda:formRef="FR_001_Asses_offer" camunda:formRefBinding="latest">
+      <bpmn:extensionElements>
+        <camunda:inputOutput>
+          <camunda:inputParameter name="Input_0ha5a8p" />
+        </camunda:inputOutput>
+      </bpmn:extensionElements>
       <bpmn:incoming>Flow_170vzsf</bpmn:incoming>
       <bpmn:outgoing>Flow_1acxnah</bpmn:outgoing>
     </bpmn:userTask>

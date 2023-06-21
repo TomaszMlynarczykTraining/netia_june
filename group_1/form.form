@@ -6,14 +6,7 @@
       "id": "Field_1alj8rl"
     },
     {
-      "label": "invoice correct",
-      "type": "checkbox",
-      "id": "Field_13zw0vv",
-      "key": "isdoable",
-      "defaultValue": false
-    },
-    {
-      "label": "Write order list",
+      "label": "Name",
       "type": "textfield",
       "id": "Field_1g5p9e4",
       "key": "offerDesc",
@@ -22,15 +15,36 @@
         "minLength": 0,
         "maxLength": 50
       },
-      "defaultValue": "some desc"
+      "defaultValue": "some desc",
+      "description": "fill name"
     },
     {
-      "label": "Text field",
+      "label": "Surname",
       "type": "textfield",
       "id": "Field_0zia9bi",
       "key": "tresc",
-      "description": "tresc do przekazania",
+      "description": "fill surname",
       "defaultValue": "tresc domyslna"
+    },
+    {
+      "values": [
+        {
+          "label": "Long Term",
+          "value": "LongTerm"
+        },
+        {
+          "label": "Short Term",
+          "value": "ShortTerm"
+        },
+        {
+          "label": "House loan",
+          "value": "HouseLoan"
+        }
+      ],
+      "label": "Checklist",
+      "type": "checklist",
+      "id": "Field_09mzj0s",
+      "key": "field_0qvb8zi"
     }
   ],
   "type": "default",

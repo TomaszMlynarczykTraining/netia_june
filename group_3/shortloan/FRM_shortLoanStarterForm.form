@@ -1,0 +1,20 @@
+{
+  "components": [
+    {
+      "label": "Is loan applicable ?",
+      "type": "checkbox",
+      "id": "Field_1csomow",
+      "key": "isLoanApplicable",
+      "description": "Choose  if loan is aplicable"
+    }
+  ],
+  "type": "default",
+  "id": "FRM_shortLoanStarterForm",
+  "exporter": {
+    "name": "Camunda Modeler",
+    "version": "5.8.0"
+  },
+  "executionPlatform": "Camunda Platform",
+  "executionPlatformVersion": "7.18.0",
+  "schemaVersion": 7
+}
