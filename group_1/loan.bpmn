@@ -14,9 +14,9 @@
         </bpmn:childLaneSet>
       </bpmn:lane>
       <bpmn:lane id="Lane_0alqxft" name="System">
-        <bpmn:flowNodeRef>Gateway_0h1fg0z</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_1xtkaet</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_162feym</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_2</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_3</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_07othcl</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_12nikk3</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1yow5ig</bpmn:flowNodeRef>
@@ -25,9 +25,9 @@
         <bpmn:flowNodeRef>Activity_1xb2vc3</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_1honk34">
           <bpmn:lane id="Lane_0k1u9pg">
-            <bpmn:flowNodeRef>Gateway_0h1fg0z</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_1xtkaet</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_162feym</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Gateway_2</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Gateway_3</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Gateway_4</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_07othcl</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Event_12nikk3</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>Activity_1yow5ig</bpmn:flowNodeRef>
@@ -40,28 +40,28 @@
       <bpmn:lane id="Lane_07t537m" name="Customer">
         <bpmn:flowNodeRef>Activity_0aruag0</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_0in8zrz</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1</bpmn:flowNodeRef>
         <bpmn:childLaneSet id="LaneSet_06jds62">
           <bpmn:lane id="Lane_0i4nghm">
             <bpmn:flowNodeRef>Activity_0aruag0</bpmn:flowNodeRef>
             <bpmn:flowNodeRef>StartEvent_1</bpmn:flowNodeRef>
-            <bpmn:flowNodeRef>Gateway_0in8zrz</bpmn:flowNodeRef>
+            <bpmn:flowNodeRef>Gateway_1</bpmn:flowNodeRef>
           </bpmn:lane>
         </bpmn:childLaneSet>
       </bpmn:lane>
     </bpmn:laneSet>
-    <bpmn:exclusiveGateway id="Gateway_0h1fg0z" default="Flow_1mfeagr">
+    <bpmn:exclusiveGateway id="Gateway_2" default="Flow_1mfeagr">
       <bpmn:incoming>Flow_0xdag19</bpmn:incoming>
       <bpmn:outgoing>Flow_1mfeagr</bpmn:outgoing>
       <bpmn:outgoing>FLOW_NO_CORRECT_DATA</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_1xtkaet" name="Loan type">
+    <bpmn:exclusiveGateway id="Gateway_3" name="Loan type">
       <bpmn:incoming>Flow_1mfeagr</bpmn:incoming>
       <bpmn:outgoing>Flow_1gg5906</bpmn:outgoing>
       <bpmn:outgoing>Flow_1cul2ek</bpmn:outgoing>
       <bpmn:outgoing>Flow_0koxcw5</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:exclusiveGateway id="Gateway_162feym">
+    <bpmn:exclusiveGateway id="Gateway_4">
       <bpmn:incoming>Flow_1vuabfn</bpmn:incoming>
       <bpmn:incoming>Flow_0hgzuzl</bpmn:incoming>
       <bpmn:incoming>Flow_14z7tm2</bpmn:incoming>
@@ -89,27 +89,27 @@
       <bpmn:incoming>Flow_1cul2ek</bpmn:incoming>
       <bpmn:outgoing>Flow_0hgzuzl</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:sequenceFlow id="Flow_0xdag19" sourceRef="Activity_0dev33b" targetRef="Gateway_0h1fg0z" />
-    <bpmn:sequenceFlow id="Flow_1mfeagr" sourceRef="Gateway_0h1fg0z" targetRef="Gateway_1xtkaet" />
-    <bpmn:sequenceFlow id="FLOW_NO_CORRECT_DATA" name="No" sourceRef="Gateway_0h1fg0z" targetRef="Gateway_0in8zrz" />
-    <bpmn:sequenceFlow id="Flow_1gg5906" name="Short term" sourceRef="Gateway_1xtkaet" targetRef="Activity_1xb2vc3">
+    <bpmn:sequenceFlow id="Flow_0xdag19" sourceRef="Activity_0dev33b" targetRef="Gateway_2" />
+    <bpmn:sequenceFlow id="Flow_1mfeagr" sourceRef="Gateway_2" targetRef="Gateway_3" />
+    <bpmn:sequenceFlow id="FLOW_NO_CORRECT_DATA" name="No" sourceRef="Gateway_2" targetRef="Gateway_1" />
+    <bpmn:sequenceFlow id="Flow_1gg5906" name="Short term" sourceRef="Gateway_3" targetRef="Activity_1xb2vc3">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${ShortTerm}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1cul2ek" name="House loan" sourceRef="Gateway_1xtkaet" targetRef="Activity_1yow5ig">
+    <bpmn:sequenceFlow id="Flow_1cul2ek" name="House loan" sourceRef="Gateway_3" targetRef="Activity_1yow5ig">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${HouseLoan}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_0koxcw5" name="Long term" sourceRef="Gateway_1xtkaet" targetRef="Activity_07othcl">
+    <bpmn:sequenceFlow id="Flow_0koxcw5" name="Long term" sourceRef="Gateway_3" targetRef="Activity_07othcl">
       <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression">${LongTerm}</bpmn:conditionExpression>
     </bpmn:sequenceFlow>
-    <bpmn:sequenceFlow id="Flow_1vuabfn" sourceRef="Activity_1xb2vc3" targetRef="Gateway_162feym" />
-    <bpmn:sequenceFlow id="Flow_0hgzuzl" sourceRef="Activity_1yow5ig" targetRef="Gateway_162feym" />
-    <bpmn:sequenceFlow id="Flow_14z7tm2" sourceRef="Activity_07othcl" targetRef="Gateway_162feym" />
-    <bpmn:sequenceFlow id="Flow_03ngqj5" sourceRef="Gateway_162feym" targetRef="Activity_0cd6217" />
+    <bpmn:sequenceFlow id="Flow_1vuabfn" sourceRef="Activity_1xb2vc3" targetRef="Gateway_4" />
+    <bpmn:sequenceFlow id="Flow_0hgzuzl" sourceRef="Activity_1yow5ig" targetRef="Gateway_4" />
+    <bpmn:sequenceFlow id="Flow_14z7tm2" sourceRef="Activity_07othcl" targetRef="Gateway_4" />
+    <bpmn:sequenceFlow id="Flow_03ngqj5" sourceRef="Gateway_4" targetRef="Activity_0cd6217" />
     <bpmn:sequenceFlow id="Flow_131bjey" sourceRef="Activity_0cd6217" targetRef="Event_12nikk3" />
     <bpmn:sequenceFlow id="Flow_1qj2mcr" sourceRef="Activity_0hpa26o" targetRef="Activity_0dev33b" />
     <bpmn:sequenceFlow id="Flow_00gle83" sourceRef="Activity_0aruag0" targetRef="Activity_0hpa26o" />
-    <bpmn:sequenceFlow id="Flow_1q62dy0" sourceRef="Gateway_0in8zrz" targetRef="Activity_0aruag0" />
-    <bpmn:sequenceFlow id="Flow_1vw0l99" sourceRef="StartEvent_1" targetRef="Gateway_0in8zrz" />
+    <bpmn:sequenceFlow id="Flow_1q62dy0" sourceRef="Gateway_1" targetRef="Activity_0aruag0" />
+    <bpmn:sequenceFlow id="Flow_1vw0l99" sourceRef="StartEvent_1" targetRef="Gateway_1" />
     <bpmn:manualTask id="Activity_0dev33b" name="ValidateUserData">
       <bpmn:incoming>Flow_1qj2mcr</bpmn:incoming>
       <bpmn:outgoing>Flow_0xdag19</bpmn:outgoing>
@@ -122,7 +122,7 @@
       <bpmn:incoming>Flow_1gg5906</bpmn:incoming>
       <bpmn:outgoing>Flow_1vuabfn</bpmn:outgoing>
     </bpmn:manualTask>
-    <bpmn:exclusiveGateway id="Gateway_0in8zrz" name="correct data?">
+    <bpmn:exclusiveGateway id="Gateway_1" name="correct data?">
       <bpmn:incoming>FLOW_NO_CORRECT_DATA</bpmn:incoming>
       <bpmn:incoming>Flow_1vw0l99</bpmn:incoming>
       <bpmn:outgoing>Flow_1q62dy0</bpmn:outgoing>
@@ -238,16 +238,16 @@
         <di:waypoint x="910" y="520" />
         <di:waypoint x="910" y="605" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="Gateway_0h1fg0z_di" bpmnElement="Gateway_0h1fg0z" isMarkerVisible="true">
+      <bpmndi:BPMNShape id="Gateway_0h1fg0z_di" bpmnElement="Gateway_2" isMarkerVisible="true">
         <dc:Bounds x="885" y="605" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_1xtkaet_di" bpmnElement="Gateway_1xtkaet" isMarkerVisible="true">
+      <bpmndi:BPMNShape id="Gateway_1xtkaet_di" bpmnElement="Gateway_3" isMarkerVisible="true">
         <dc:Bounds x="995" y="605" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="985" y="593" width="49" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_162feym_di" bpmnElement="Gateway_162feym" isMarkerVisible="true">
+      <bpmndi:BPMNShape id="Gateway_162feym_di" bpmnElement="Gateway_4" isMarkerVisible="true">
         <dc:Bounds x="1275" y="605" width="50" height="50" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_01dyu6p_di" bpmnElement="Activity_07othcl">
@@ -284,7 +284,7 @@
       <bpmndi:BPMNShape id="Activity_1cbt3mv_di" bpmnElement="Activity_1xb2vc3">
         <dc:Bounds x="1110" y="590" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0gnrq25_di" bpmnElement="Gateway_0in8zrz" isMarkerVisible="true">
+      <bpmndi:BPMNShape id="Gateway_0gnrq25_di" bpmnElement="Gateway_1" isMarkerVisible="true">
         <dc:Bounds x="305" y="115" width="50" height="50" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="298" y="85" width="65" height="14" />
