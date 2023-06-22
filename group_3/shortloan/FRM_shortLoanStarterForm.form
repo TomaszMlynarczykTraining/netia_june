@@ -6,6 +6,13 @@
       "id": "Field_1csomow",
       "key": "isLoanApplicable",
       "description": "Choose  if loan is aplicable"
+    },
+    {
+      "label": "There is no event variable set",
+      "type": "checkbox",
+      "id": "Field_1nlchvn",
+      "key": "noEvent",
+      "defaultValue": true
     }
   ],
   "type": "default",
