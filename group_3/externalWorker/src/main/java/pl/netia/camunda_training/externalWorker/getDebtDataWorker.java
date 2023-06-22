@@ -27,7 +27,7 @@ public class getDebtDataWorker implements ExternalTaskHandler {
         // complete the external task
         externalTaskService.complete(externalTask, variables);
 
-        Logger.getLogger("scoreProvider")
+        Logger.getLogger("getDebtDataWorker")
                 .log(Level.INFO, "Debt data {0} for customer {1} provided!", new Object[]{creditScore, customerId});
 
     }
