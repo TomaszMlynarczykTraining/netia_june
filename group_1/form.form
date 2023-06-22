@@ -37,14 +37,14 @@
           "value": "ShortTerm"
         },
         {
-          "label": "House loan",
+          "label": "House Loan",
           "value": "HouseLoan"
         }
       ],
-      "label": "Checklist",
-      "type": "checklist",
-      "id": "Field_09mzj0s",
-      "key": "field_0qvb8zi"
+      "label": "Radio",
+      "type": "radio",
+      "id": "Field_1r3d4lx",
+      "key": "zmienna"
     }
   ],
   "type": "default",
